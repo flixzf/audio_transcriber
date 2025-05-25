@@ -96,7 +96,7 @@ pyinstaller --onefile --windowed --name=음성파일전사프로그램 audio_tra
 # 고급 빌드 (모든 의존성 포함)
 pyinstaller --onefile --windowed --name=음성파일전사프로그램 \
   --hidden-import=whisper --hidden-import=pyannote.audio \
-  --hidden-import=torch --hidden-import=PyQt5 \
+  --hidden-import=torch --hidden-import=PySide6 \
   audio_transcriber.py
 ```
 
@@ -197,7 +197,7 @@ pyinstaller --onefile --windowed --name=음성파일전사프로그램 \
 
 - **OpenAI**: Whisper 모델 제공
 - **pyannote-audio**: 화자 분리 기술
-- **PyQt5**: GUI 프레임워크
+- **PySide6**: GUI 프레임워크
 
 ## 📞 지원
 

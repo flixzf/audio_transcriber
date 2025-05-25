@@ -16,12 +16,12 @@ import threading
 from datetime import timedelta
 from pathlib import Path
 
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, 
+from PySide6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, 
                              QWidget, QPushButton, QLabel, QFileDialog, QComboBox,
                              QProgressBar, QTextEdit, QGroupBox, QGridLayout,
                              QCheckBox, QSpinBox, QMessageBox, QTabWidget)
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, QTimer
-from PyQt5.QtGui import QFont, QIcon
+from PySide6.QtCore import Qt, QThread, Signal, QTimer
+from PySide6.QtGui import QFont, QIcon
 
 import whisper
 from pyannote.audio import Pipeline
@@ -29,9 +29,9 @@ import torch
 
 class TranscriptionWorker(QThread):
     """백그라운드에서 전사 작업을 수행하는 워커 스레드"""
-    progress_updated = pyqtSignal(int, str)
-    finished = pyqtSignal(str, list)
-    error_occurred = pyqtSignal(str)
+    progress_updated = Signal(int, str)
+    finished = Signal(str, list)
+    error_occurred = Signal(str)
 
     def __init__(self, audio_file, model_size, device, hf_token, use_diarization):
         super().__init__()
